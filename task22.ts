@@ -37,7 +37,7 @@ class AddressBook {
     // New functionalities:
     // 1. Validate various contact properties on addition (already implemented)
     // 2. Search contacts by name (partial match)
-    searchContacts(searchTerm: string): Contact[] {
+    searchContacts: (searchTerm: string)=> Contact[] = (searchTerm) =>{
         const normalizedSearchTerm: string = searchTerm.toLowerCase();
         return this.contacts.filter((contact:Contact) =>
             contact.name.toLowerCase().includes(normalizedSearchTerm)

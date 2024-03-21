@@ -32,6 +32,15 @@ var AddressBook = /** @class */ (function () {
         this.sortByName = function () {
             _this.contacts.sort(function (a, b) { return a.name.localeCompare(b.name); });
         };
+        // New functionalities:
+        // 1. Validate various contact properties on addition (already implemented)
+        // 2. Search contacts by name (partial match)
+        this.searchContacts = function (searchTerm) {
+            var normalizedSearchTerm = searchTerm.toLowerCase();
+            return _this.contacts.filter(function (contact) {
+                return contact.name.toLowerCase().includes(normalizedSearchTerm);
+            });
+        };
         this.printContacts = function () {
             for (var _i = 0, _a = _this.contacts; _i < _a.length; _i++) {
                 var contact = _a[_i];
@@ -42,15 +51,6 @@ var AddressBook = /** @class */ (function () {
             }
         };
     }
-    // New functionalities:
-    // 1. Validate various contact properties on addition (already implemented)
-    // 2. Search contacts by name (partial match)
-    AddressBook.prototype.searchContacts = function (searchTerm) {
-        var normalizedSearchTerm = searchTerm.toLowerCase();
-        return this.contacts.filter(function (contact) {
-            return contact.name.toLowerCase().includes(normalizedSearchTerm);
-        });
-    };
     return AddressBook;
 }());
 var addressBook = new AddressBook();
